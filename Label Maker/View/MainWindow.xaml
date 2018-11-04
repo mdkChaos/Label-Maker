@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Style="{StaticResource WindowStyle}"
         Icon="/Label Maker;component/Resources/Images/LogoIcon.png"
+        WindowStartupLocation="CenterScreen"
         >
     <Grid>
         <DockPanel>
