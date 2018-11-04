@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Label_Maker
+namespace LabelMaker.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

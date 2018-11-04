@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Label_Maker.Properties
+namespace LabelMaker.Properties
 {
 
 
