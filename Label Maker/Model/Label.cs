@@ -8,9 +8,9 @@ namespace Label_Maker.Model
 {
     public class Label
     {
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        string ImagePath { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string ImagePath { get; set; }
 
         public Label()
         {
