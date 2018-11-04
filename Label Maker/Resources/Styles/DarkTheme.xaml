@@ -92,7 +92,7 @@
                                                        Grid.Column="1"
                                                        HorizontalAlignment="Left"
                                                        VerticalAlignment="Center"
-                                                       Margin="4,0,0,0"
+                                                       Margin="16,0,0,0"
                                                        Foreground="White"
                                                        FontFamily="pack://application:,,,/Resources/Fonts/#Lobster"
                                                        FontSize="18"
@@ -188,5 +188,6 @@
         </Setter>
     </Style>
     <!--WindowChrome Style End-->
+    
     
 </ResourceDictionary>

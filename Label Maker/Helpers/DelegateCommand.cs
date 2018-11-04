@@ -7,13 +7,15 @@ namespace LabelMaker.Helpers
     {
         #region Fields
         readonly Action<object> execute;
-
         readonly Predicate<object> canExecute;
         #endregion
 
         #region Constructors
 
-        public DelegateCommand(Action<object> execute) : this(execute, null) { }
+        public DelegateCommand(Action<object> execute) : this(execute, null)
+        {
+
+        }
 
         public DelegateCommand(Action<object> execute, Predicate<object> canExecute)
         {
@@ -32,7 +34,7 @@ namespace LabelMaker.Helpers
 
         public void Execute(object parameter)
         {
-            execute(parameter);
+            execute.Invoke(parameter);
         }
 
         public event EventHandler CanExecuteChanged

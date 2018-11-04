@@ -70,7 +70,9 @@
     </Compile>
     <Compile Include="Helpers\DelegateCommand.cs" />
     <Compile Include="Helpers\WindowStyle.cs" />
-    <Compile Include="Helpers\ObservableObject.cs" />
+    <Compile Include="Helpers\ViewModelBase.cs" />
+    <Compile Include="Model\Label.cs" />
+    <Compile Include="Model\LabelRepository.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -104,9 +106,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\LogoIcon.png" />
   </ItemGroup>

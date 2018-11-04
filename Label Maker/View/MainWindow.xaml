@@ -9,14 +9,39 @@
         Icon="/Label Maker;component/Resources/Images/LogoIcon.png"
         WindowStartupLocation="CenterScreen"
         >
-    <Grid>
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top">
-                <DockPanel>
+    <Grid Margin="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" MinWidth="50"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*" MinWidth="200"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" BorderThickness="1">
+            <FlowDocumentScrollViewer IsToolBarVisible="True"
+                                      Zoom="50"
+                                      MinZoom="10"
+                                      MaxZoom="200"
+                                      ZoomIncrement="5"
+                                      VerticalAlignment="Stretch">
+                <FlowDocument Background="Gray" IsHyphenationEnabled="True">
+                    <BlockUIContainer>
+                        <Canvas VerticalAlignment="Stretch"
+                                Background="White"
+                                Width="29.7 cm"
+                                Height="21 cm">
+                            
+                        </Canvas>
+                    </BlockUIContainer>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+        </Border>
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="4" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="{StaticResource TitleBarBackgroundBrush}"/>
+        <Border Grid.Column="2" BorderThickness="1" Background="LightGray">
+            <StackPanel Background="{StaticResource TitleBarBackgroundBrush}" VerticalAlignment="Stretch">
+                <Button Margin="4" Padding="4" FontSize="18" FontWeight="DemiBold" Content="Start"/>
+                <StackPanel>
                     
-                </DockPanel>
+                </StackPanel>
             </StackPanel>
-        </DockPanel>
-        
+        </Border>
     </Grid>
 </Window>
