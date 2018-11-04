@@ -28,7 +28,12 @@
                                 Background="White"
                                 Width="29.7 cm"
                                 Height="21 cm">
-                            
+                            <WrapPanel Orientation="Horizontal"
+                                       Width="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Width}"
+                                       Height="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Height}"
+                            >
+                                
+                            </WrapPanel>
                         </Canvas>
                     </BlockUIContainer>
                 </FlowDocument>

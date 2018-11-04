@@ -71,7 +71,6 @@
     <Compile Include="Helpers\DelegateCommand.cs" />
     <Compile Include="Helpers\WindowStyle.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
-    <Compile Include="Model\Label.cs" />
     <Compile Include="Model\LabelRepository.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
@@ -113,6 +112,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\LogoIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataProvider\DataProvider.csproj">
+      <Project>{f742633c-8404-4f72-ab95-a5d77706eb22}</Project>
+      <Name>DataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{4445694a-19ac-40e0-abd9-710e7ab2559d}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

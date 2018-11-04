@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Label_Maker.Model
+﻿namespace Data
 {
     public class Label
     {
@@ -16,8 +10,7 @@ namespace Label_Maker.Model
         {
 
         }
-
-        public Label(string firstName,string lastName, string imagePath)
+        public Label(string firstName, string lastName, string imagePath)
         {
             FirstName = firstName;
             LastName = lastName;

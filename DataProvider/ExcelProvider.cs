@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using Label_Maker.Model;
+using Data;
 using Microsoft.Win32;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -20,9 +17,9 @@ namespace DataProvider
         private static string FileName { get; set; }
         private static ObservableCollection<Label> Labels { get; }
 
-        public static ObservableCollection<Label> GetLabelsAsinc()
+        public static async Task<ObservableCollection<Label>> GetLabelsAsincAsync()
         {
-
+            await StartExcelTaskAsync();
 
             return Labels;
         }
@@ -30,6 +27,7 @@ namespace DataProvider
         private static async Task StartExcelTaskAsync()
         {
             await Task.Run(() => ExtractDataFromExcel());
+            Task.WaitAll();
         }
 
         private static void OpenFile(string filter)
@@ -42,33 +40,6 @@ namespace DataProvider
             {
                 FileName = openFile.FileName;
             }
-        }
-
-        private static void ReadFromRow(Excel.Worksheet workSheet)
-        {
-            int row = 2;
-            CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-            while (workSheet.Cells[row, 1].Text.Trim() != string.Empty)
-            {
-                Label label = new Label
-                {
-                    FirstName = workSheet.Cells[row, 1].Text.Trim(),
-                    LastName = workSheet.Cells[row, 2].Text.Trim()
-                };
-                string imgNumber = workSheet.Cells[row, 3].Text.Trim();
-                if (string.IsNullOrEmpty(imgNumber))
-                {
-                    label.ImagePath = imgNumber;
-                }
-                else
-                {
-                    label.ImagePath = "0";
-                }
-                Labels.Add(label);
-                row++;
-            }
-            Thread.CurrentThread.CurrentCulture = temp_culture;
         }
 
         private static void ExtractDataFromExcel()
@@ -115,5 +86,31 @@ namespace DataProvider
             }
         }
 
+        private static void ReadFromRow(Excel.Worksheet workSheet)
+        {
+            int row = 2;
+            CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+            while (workSheet.Cells[row, 1].Text.Trim() != string.Empty)
+            {
+                Label label = new Label
+                {
+                    FirstName = workSheet.Cells[row, 1].Text.Trim(),
+                    LastName = workSheet.Cells[row, 2].Text.Trim()
+                };
+                string imgNumber = workSheet.Cells[row, 3].Text.Trim();
+                if (string.IsNullOrEmpty(imgNumber))
+                {
+                    label.ImagePath = imgNumber;
+                }
+                else
+                {
+                    label.ImagePath = "0";
+                }
+                Labels.Add(label);
+                row++;
+            }
+            Thread.CurrentThread.CurrentCulture = temp_culture;
+        }
     }
 }

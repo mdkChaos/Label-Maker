@@ -1,19 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using Data;
+using DataProvider;
 
 namespace Label_Maker.Model
 {
     public static class LabelRepository
     {
-        public static ObservableCollection<Label> AllLabels { get; }
-
-        public static void GetLabels()
+        private static ObservableCollection<Label> labels;
+        public static ObservableCollection<Label> AllLabels
         {
-
+            get
+            {
+                labels = GetLabels();
+                return labels;
+            }
+        }
+        private static ObservableCollection<Label> GetLabels()
+        {
+            return ExcelProvider.GetLabelsAsincAsync().Result;
         }
     }
 }

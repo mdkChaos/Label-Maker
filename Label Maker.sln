@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabelMaker", "Label Maker\L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProvider", "DataProvider\DataProvider.csproj", "{F742633C-8404-4F72-AB95-A5D77706EB22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{4445694A-19AC-40E0-ABD9-710E7AB2559D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F742633C-8404-4F72-AB95-A5D77706EB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F742633C-8404-4F72-AB95-A5D77706EB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F742633C-8404-4F72-AB95-A5D77706EB22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4445694A-19AC-40E0-ABD9-710E7AB2559D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4445694A-19AC-40E0-ABD9-710E7AB2559D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4445694A-19AC-40E0-ABD9-710E7AB2559D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4445694A-19AC-40E0-ABD9-710E7AB2559D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
