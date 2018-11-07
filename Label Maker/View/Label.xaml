@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Label_Maker.View.Label"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Label_Maker.View"
+             mc:Ignorable="d" d:DesignWidth="188.75">
+
+    <Border CornerRadius="6" Width="5 cm" Height="1.6 cm" Background="White" BorderThickness="1" BorderBrush="Red" Padding="2">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1.5 cm"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Margin="1 0 0 0"
+                       Text="Александрова"
+                       FontFamily="pack://application:,,,/Resources/Fonts/#Monotype Corsiva"
+                       FontSize="24"
+                       Foreground="Red"/>
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Margin="1 0 0 0"
+                       Text="Александра"
+                       FontFamily="pack://application:,,,/Resources/Fonts/#Monotype Corsiva"
+                       FontSize="24"
+                       Foreground="Red"/>
+            <Image Grid.Column="1"
+                   Grid.RowSpan="2"
+                   Width="1.4 cm"
+                   Height="1.4 cm"/>
+        </Grid>
+    </Border>
+</UserControl>
