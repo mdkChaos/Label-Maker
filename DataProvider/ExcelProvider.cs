@@ -15,19 +15,11 @@ namespace DataProvider
     public static class ExcelProvider
     {
         private static string FileName { get; set; }
-        private static ObservableCollection<Label> Labels { get; }
+        public static ObservableCollection<Label> Labels { get; } = new ObservableCollection<Label>();
 
-        public static async Task<ObservableCollection<Label>> GetLabelsAsincAsync()
-        {
-            await StartExcelTaskAsync();
-
-            return Labels;
-        }
-
-        private static async Task StartExcelTaskAsync()
+        public static async Task GetLabelsAsync()
         {
             await Task.Run(() => ExtractDataFromExcel());
-            Task.WaitAll();
         }
 
         private static void OpenFile(string filter)
@@ -52,19 +44,22 @@ namespace DataProvider
             try
             {
                 OpenFile("Excel files(*.xls*)|*.xls*");
-                excelApp = new Excel.Application
+                if (!string.IsNullOrWhiteSpace(FileName))
                 {
-                    Visible = false,
-                    ScreenUpdating = false,
-                    EnableEvents = false
-                };
+                    excelApp = new Excel.Application
+                    {
+                        Visible = false,
+                        ScreenUpdating = false,
+                        EnableEvents = false
+                    };
 
-                workBooks = excelApp.Workbooks;
-                workBook = workBooks.Open(FileName);
-                workSheets = workBook.Worksheets;
-                workSheet = (Excel.Worksheet)workSheets.get_Item(1);
+                    workBooks = excelApp.Workbooks;
+                    workBook = workBooks.Open(FileName);
+                    workSheets = workBook.Worksheets;
+                    workSheet = (Excel.Worksheet)workSheets.get_Item(1);
 
-                ReadFromRow(workSheet);
+                    ReadFromRow(workSheet);
+                }
             }
             catch (FileNotFoundException)
             {
@@ -76,32 +71,43 @@ namespace DataProvider
             }
             finally
             {
-                workBook.Close();
-                excelApp.Quit();
-                Marshal.ReleaseComObject(workSheet);
-                Marshal.ReleaseComObject(workSheets);
-                Marshal.ReleaseComObject(workBook);
-                Marshal.ReleaseComObject(workBooks);
-                Marshal.ReleaseComObject(excelApp);
+                if (FileName != null)
+                {
+                    workBook.Close();
+                    excelApp.Quit();
+                    FileName = null;
+                    Marshal.ReleaseComObject(workSheet);
+                    Marshal.ReleaseComObject(workSheets);
+                    Marshal.ReleaseComObject(workBook);
+                    Marshal.ReleaseComObject(workBooks);
+                    Marshal.ReleaseComObject(excelApp);
+                }
             }
         }
 
         private static void ReadFromRow(Excel.Worksheet workSheet)
         {
             int row = 2;
+            dynamic range;
+            string text;
+            Label label = new Label();
             CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-            while (workSheet.Cells[row, 1].Text.Trim() != string.Empty)
+            range = workSheet.Cells[row, 1];
+            text = range.Text;
+
+            while (!string.IsNullOrWhiteSpace(text.Trim()))
             {
-                Label label = new Label
+                label.FirstName = text.Trim();
+                range = workSheet.Cells[row, 2];
+                text = range.Text;
+                label.LastName = text.Trim();
+
+                range = workSheet.Cells[row, 3];
+                text = range.Text;
+                if (int.TryParse(text.Trim(), out int result))
                 {
-                    FirstName = workSheet.Cells[row, 1].Text.Trim(),
-                    LastName = workSheet.Cells[row, 2].Text.Trim()
-                };
-                string imgNumber = workSheet.Cells[row, 3].Text.Trim();
-                if (string.IsNullOrEmpty(imgNumber))
-                {
-                    label.ImagePath = imgNumber;
+                    label.ImagePath = result.ToString();
                 }
                 else
                 {
@@ -109,8 +115,15 @@ namespace DataProvider
                 }
                 Labels.Add(label);
                 row++;
+                range = workSheet.Cells[row, 1];
+                text = range.Text;
             }
+
             Thread.CurrentThread.CurrentCulture = temp_culture;
+            Marshal.ReleaseComObject(workSheet);
+            Marshal.ReleaseComObject(range);
+            range = null;
+            workSheet = null;
         }
     }
 }
