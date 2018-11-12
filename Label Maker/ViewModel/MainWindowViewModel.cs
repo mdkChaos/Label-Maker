@@ -29,11 +29,12 @@ namespace LabelMaker.ViewModel
         #endregion
 
         #region Constractors
-        
+
         public MainWindowViewModel()
         {
             GetLabelsCommand = new DelegateCommand(async o => await GetLabelsAsync());
             InsertLabelOnCanvasCommand = new DelegateCommand(o => InsertLabelOnCanvas());
+            //InsertLabelOnCanvasCommand = new DelegateCommand(async o => await DrawAsync());
             PrintCommand = new DelegateCommand(o => Print());
         }
 
@@ -53,41 +54,25 @@ namespace LabelMaker.ViewModel
         {
             await LabelRepository.GetLabelsAsync();
         }
-        
+
         //private async Task DrawAsync()
         //{
         //    await Task.Run(() => InsertLabelOnCanvas());
         //}
-        
+
         private void InsertLabelOnCanvas()
         {
-            //window.A4.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(delegate ()
+            //window.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(delegate ()
             //{
-            //    window.A4.Blocks.Clear();
+            window.A4.Blocks.Clear();
             //}));
             ObservableCollection<Label> listOfUsers = LabelRepository.AllLabels;
 
             foreach (Label user in listOfUsers)
             {
-                WrapPanel wrapPanel = new WrapPanel
-                {
-                    Margin = new Thickness(10)
-                };
-
-                for (int i = 0; i < 55; i++)
-                {
-                    View.Label label = new View.Label();
-                    label.FirstName.Text = user.FirstName;
-                    label.LastName.Text = user.LastName;
-                    label.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + user.ImagePath + ".png", UriKind.RelativeOrAbsolute));
-
-                    wrapPanel.Children.Add(label);
-                }
-                BlockUIContainer container = new BlockUIContainer(wrapPanel);
-                window.A4.Blocks.Add(container);
-                //window.A4.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(delegate ()
+                //window.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(delegate ()
                 //{
-                //    window.A4.Blocks.Add(container);
+                window.A4.Blocks.Add(AddLabel(user));
                 //}));
             }
         }
@@ -105,7 +90,26 @@ namespace LabelMaker.ViewModel
 
         #region Methods
 
+        private static BlockUIContainer AddLabel(Label user)
+        {
+            WrapPanel wrapPanel = new WrapPanel
+            {
+                Margin = new Thickness(10)
+            };
 
+            for (int i = 0; i < 55; i++)
+            {
+                View.Label label = new View.Label();
+                label.FirstName.Text = user.FirstName;
+                label.LastName.Text = user.LastName;
+                label.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + user.ImagePath + ".png", UriKind.RelativeOrAbsolute));
+
+                wrapPanel.Children.Add(label);
+            }
+            BlockUIContainer container = new BlockUIContainer(wrapPanel);
+
+            return container;
+        }
 
         #endregion
     }
