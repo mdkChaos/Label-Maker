@@ -59,6 +59,7 @@ namespace DataProvider
                     workSheet = (Excel.Worksheet)workSheets.get_Item(1);
 
                     ReadFromRow(workSheet);
+                    MessageBox.Show("Extract successful!", "Congratulation!", MessageBoxButton.OK);
                 }
             }
             catch (FileNotFoundException)
@@ -90,7 +91,7 @@ namespace DataProvider
             int row = 2;
             dynamic range;
             string text;
-            Label label = new Label();
+            Label label;
             CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
             range = workSheet.Cells[row, 1];
@@ -98,6 +99,7 @@ namespace DataProvider
 
             while (!string.IsNullOrWhiteSpace(text.Trim()))
             {
+                label = new Label();
                 label.FirstName = text.Trim();
                 range = workSheet.Cells[row, 2];
                 text = range.Text;

@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using Label = Data.Label;
 using System.Windows.Media.Imaging;
 using System;
+using System.Windows.Threading;
 
 namespace LabelMaker.ViewModel
 {
@@ -28,7 +29,7 @@ namespace LabelMaker.ViewModel
         #endregion
 
         #region Constractors
-
+        
         public MainWindowViewModel()
         {
             GetLabelsCommand = new DelegateCommand(async o => await GetLabelsAsync());
@@ -52,10 +53,18 @@ namespace LabelMaker.ViewModel
         {
             await LabelRepository.GetLabelsAsync();
         }
-
+        
+        //private async Task DrawAsync()
+        //{
+        //    await Task.Run(() => InsertLabelOnCanvas());
+        //}
+        
         private void InsertLabelOnCanvas()
         {
-            //window.A4.Blocks.Clear();
+            //window.A4.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(delegate ()
+            //{
+            //    window.A4.Blocks.Clear();
+            //}));
             ObservableCollection<Label> listOfUsers = LabelRepository.AllLabels;
 
             foreach (Label user in listOfUsers)
@@ -64,7 +73,6 @@ namespace LabelMaker.ViewModel
                 {
                     Margin = new Thickness(10)
                 };
-                BlockUIContainer container = new BlockUIContainer(wrapPanel);
 
                 for (int i = 0; i < 55; i++)
                 {
@@ -75,7 +83,12 @@ namespace LabelMaker.ViewModel
 
                     wrapPanel.Children.Add(label);
                 }
+                BlockUIContainer container = new BlockUIContainer(wrapPanel);
                 window.A4.Blocks.Add(container);
+                //window.A4.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(delegate ()
+                //{
+                //    window.A4.Blocks.Add(container);
+                //}));
             }
         }
 
