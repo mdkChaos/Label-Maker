@@ -34,7 +34,6 @@ namespace LabelMaker.ViewModel
         {
             GetLabelsCommand = new DelegateCommand(async o => await GetLabelsAsync());
             InsertLabelOnCanvasCommand = new DelegateCommand(o => InsertLabelOnCanvas());
-            //InsertLabelOnCanvasCommand = new DelegateCommand(async o => await DrawAsync());
             PrintCommand = new DelegateCommand(o => Print());
         }
 
@@ -55,25 +54,15 @@ namespace LabelMaker.ViewModel
             await LabelRepository.GetLabelsAsync();
         }
 
-        //private async Task DrawAsync()
-        //{
-        //    await Task.Run(() => InsertLabelOnCanvas());
-        //}
-
         private void InsertLabelOnCanvas()
         {
-            //window.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(delegate ()
-            //{
             window.A4.Blocks.Clear();
-            //}));
+            
             ObservableCollection<Label> listOfUsers = LabelRepository.AllLabels;
 
             foreach (Label user in listOfUsers)
             {
-                //window.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(delegate ()
-                //{
                 window.A4.Blocks.Add(AddLabel(user));
-                //}));
             }
         }
 

@@ -8,6 +8,8 @@
         Style="{StaticResource WindowStyle}"
         Icon="/Label Maker;component/Resources/Images/LogoIcon.png"
         WindowStartupLocation="CenterScreen"
+        MinHeight="540"
+        MinWidth="960"
         >
     <Window.DataContext>
         <local:MainWindowViewModel/>
@@ -15,10 +17,11 @@
 
     <Grid Margin="4">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" MinWidth="50"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="1*" MinWidth="200"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="180"/>
         </Grid.ColumnDefinitions>
+        
         <Border Grid.Column="0" BorderThickness="1" BorderBrush="Gray">
             <FlowDocumentReader Name="DocumentReader"
                                 Zoom="50"
@@ -27,7 +30,8 @@
                                 ZoomIncrement="5"
                                 Background="Gray"
                                 IsFindEnabled="False"
-                                IsPrintEnabled="True">
+                                IsPrintEnabled="True"
+                                Margin="4">
                 <FlowDocument Name="A4"
                               Background="White"
                               PageWidth="29.7 cm"
@@ -35,26 +39,43 @@
                               ColumnWidth="29.7 cm"/>
             </FlowDocumentReader>
         </Border>
-        <GridSplitter Grid.Column="1"
-                      ShowsPreview="False"
-                      Width="4"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Stretch"
-                      Background="{StaticResource TitleBarBackgroundBrush}"/>
+        
         <Border Grid.Column="2" BorderThickness="1" BorderBrush="Gray">
             <StackPanel Background="{StaticResource TitleBarBackgroundBrush}">
-                <Button Content="Extract Data"
-                        Style="{StaticResource ControlButton}"
+                <Button Style="{StaticResource ControlButton}"
                         Command="{Binding GetLabelsCommand}"
-                />
-                <Button Content="Plain Label"
-                        Style="{StaticResource ControlButton}"
+                        HorizontalContentAlignment="Left"
+                        Padding="4"
+                >
+                    <WrapPanel>
+                        <Image Source="/Label Maker;component/Resources/Images/FileIcon.png" Width="24" Margin="4 0"/>
+                        <TextBlock Text="Extract Data" Margin="4 0"/>
+                    </WrapPanel>
+                </Button>
+                
+                <Button Style="{StaticResource ControlButton}"
                         Command="{Binding InsertLabelOnCanvasCommand}"
-                />
-                <Button Content="Print"
-                        Style="{StaticResource ControlButton}"
+                        HorizontalContentAlignment="Left"
+                        Padding="4"
+                >
+                    <WrapPanel>
+                        <Image Source="/Label Maker;component/Resources/Images/LabelIcon.png" Width="24" Margin="4 0"/>
+                        <TextBlock Text="Plain Label" Margin="4 0"/>
+                    </WrapPanel>
+                </Button>
+                
+                <Button Style="{StaticResource ControlButton}"
                         Command="{Binding PrintCommand}"
-                />
+                        HorizontalContentAlignment="Left"
+                        Padding="4"
+                >
+                    <WrapPanel>
+                        <Image Source="/Label Maker;component/Resources/Images/PrintIcon.png" Width="24" Margin="4 0"/>
+                        <TextBlock Text="Print" Margin="4 0"/>
+                    </WrapPanel>
+                </Button>
+                
+                
             </StackPanel>
         </Border>
     </Grid>
