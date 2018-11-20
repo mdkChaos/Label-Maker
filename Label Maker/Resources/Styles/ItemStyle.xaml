@@ -6,10 +6,17 @@
         <Setter Property="Padding" Value="4"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
     </Style>
     <Style x:Key="LabelTextBlock" TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="1 0 0 0"/>
         <Setter Property="FontFamily" Value="pack://application:,,,/Resources/Fonts/#Monotype Corsiva"/>
         <Setter Property="FontSize" Value="24"/>
     </Style>
+    <DataTemplate x:Key="SelectColorComboBox">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Background="{Binding Path=ColorHEX}" Width="24" Height="24" ToolTip="#0e0e10"/>
+            <TextBlock Text="{Binding Path=Name}" Margin="4 0" FontSize="18" FontWeight="DemiBold" Padding="4 0"/>
+        </StackPanel>
+    </DataTemplate>
 </ResourceDictionary>

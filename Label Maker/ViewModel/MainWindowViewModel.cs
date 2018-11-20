@@ -11,6 +11,7 @@ using Label = Data.Label;
 using System.Windows.Media.Imaging;
 using System;
 using System.Windows.Threading;
+using Data;
 
 namespace LabelMaker.ViewModel
 {
@@ -24,7 +25,7 @@ namespace LabelMaker.ViewModel
 
         #region Properties
 
-
+        public ObservableCollection<Color> Colors { get; }
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace LabelMaker.ViewModel
             GetLabelsCommand = new DelegateCommand(async o => await GetLabelsAsync());
             InsertLabelOnCanvasCommand = new DelegateCommand(o => InsertLabelOnCanvas());
             PrintCommand = new DelegateCommand(o => Print());
+            Colors = ColorRepository.Colors;
         }
 
         #endregion

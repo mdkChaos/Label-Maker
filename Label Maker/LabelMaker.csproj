@@ -79,6 +79,7 @@
     <Compile Include="Helpers\DelegateCommand.cs" />
     <Compile Include="Helpers\WindowStyle.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
+    <Compile Include="Model\ColorRepository.cs" />
     <Compile Include="Model\LabelRepository.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\Label.xaml.cs">
