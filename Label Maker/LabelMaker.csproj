@@ -60,7 +60,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Styles\ItemStyle.xaml">
+    <Page Include="Resources\Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Templates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -80,6 +84,7 @@
     <Compile Include="Helpers\WindowStyle.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
     <Compile Include="Model\ColorRepository.cs" />
+    <Compile Include="Model\FontRepository.cs" />
     <Compile Include="Model\LabelRepository.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\Label.xaml.cs">

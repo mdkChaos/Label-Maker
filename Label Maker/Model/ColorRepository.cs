@@ -1,10 +1,5 @@
 ﻿using Data;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LabelMaker.Model
 {
@@ -25,13 +20,11 @@ namespace LabelMaker.Model
 
         private static ObservableCollection<Color> CreateColors()
         {
-            Color color;
-            ObservableCollection<Color> colors = new ObservableCollection<Color>();
-
-            color = new Color("#0e0e10", "Black");
-            colors.Add(color);
-            color = new Color("#cc2c24", "Red");
-            colors.Add(color);
+            ObservableCollection<Color> colors = new ObservableCollection<Color>
+            {
+                new Color("#0e0e10", "Black"),
+                new Color("#cc2c24", "Red")
+            };
 
             return colors;
         }

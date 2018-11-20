@@ -26,6 +26,7 @@ namespace LabelMaker.ViewModel
         #region Properties
 
         public ObservableCollection<Color> Colors { get; }
+        public ObservableCollection<Font> Fonts { get; }
 
         #endregion
 
@@ -37,6 +38,7 @@ namespace LabelMaker.ViewModel
             InsertLabelOnCanvasCommand = new DelegateCommand(o => InsertLabelOnCanvas());
             PrintCommand = new DelegateCommand(o => Print());
             Colors = ColorRepository.Colors;
+            Fonts = FontRepository.Fonts;
         }
 
         #endregion

@@ -51,6 +51,35 @@
                     </WrapPanel>
                 </Button>
 
+                <Separator Background="Gray"/>
+                
+                <Label Content="Colors"
+                       HorizontalAlignment="Right"
+                       Foreground="LightGray"
+                       Margin="4 0"
+                       Padding="4 0"
+                       FontSize="14"
+                       FontWeight="DemiBold"/>
+
+                <ComboBox Style="{StaticResource ComboBoxes}"
+                          ItemsSource="{Binding Colors}"
+                          ItemTemplate="{StaticResource SelectColorComboBox}"/>
+                
+                <Label Content="Fonts"
+                       HorizontalAlignment="Right"
+                       Foreground="LightGray"
+                       Margin="4 0"
+                       Padding="4 0"
+                       FontSize="14"
+                       FontWeight="DemiBold"/>
+
+                <ComboBox Style="{StaticResource ComboBoxes}"
+                          VerticalContentAlignment="Center"
+                          ItemsSource="{Binding Fonts}"
+                          ItemTemplate="{StaticResource SelectFontComboBox}"/>
+
+                <Separator Background="Gray"/>
+
                 <Button Style="{StaticResource ControlButton}"
                         Command="{Binding InsertLabelOnCanvasCommand}"
                 >
@@ -68,103 +97,6 @@
                         <TextBlock Text="Print" Margin="4 0"/>
                     </WrapPanel>
                 </Button>
-
-                <Separator Background="Gray" Margin="0"/>
-                
-                <Label Content="Colors"
-                       HorizontalAlignment="Right"
-                       Foreground="LightGray"
-                       Margin="4 0"
-                       Padding="4 0"
-                       FontSize="14"
-                       FontWeight="DemiBold"/>
-
-                <ComboBox Margin="4"
-                          Height="30"
-                          SelectedIndex="0"
-                          ItemsSource="{Binding Colors}"
-                          ItemTemplate="{StaticResource SelectColorComboBox}"/>
-                <!--<ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Background="#0e0e10" Width="24" Height="24" ToolTip="#0e0e10"/>
-                            <TextBlock Text="Black" Margin="4 0" FontSize="18" FontWeight="DemiBold" Padding="4 0"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Background="#cc2c24" Width="24" Height="24" ToolTip="#cc2c24"/>
-                            <TextBlock Text="Red" Margin="4 0" FontSize="18" FontWeight="DemiBold" Padding="4 0"/>
-                        </StackPanel>
-                    </ComboBoxItem>-->
-                <!--</ComboBox>-->
-
-                <Label Content="Fonts"
-                       HorizontalAlignment="Right"
-                       Foreground="LightGray"
-                       Margin="4 0"
-                       Padding="4 0"
-                       FontSize="14"
-                       FontWeight="DemiBold"/>
-
-                <ComboBox Margin="4"
-                          Height="30"
-                          SelectedIndex="0"
-                          VerticalContentAlignment="Center">
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Angry Birds"
-                                       Margin="4 0"
-                                       Padding="4 0"
-                                       FontSize="18"
-                                       FontFamily="pack://application:,,,/Resources/Fonts/#AngryBirds"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Arial"
-                                       Margin="4 0"
-                                       Padding="4 0"
-                                       FontSize="18"
-                                       FontFamily="pack://application:,,,/Resources/Fonts/#Arial"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Lato Heavy Italic"
-                                       Margin="4 0"
-                                       Padding="4 0"
-                                       FontSize="18"
-                                       FontFamily="pack://application:,,,/Resources/Fonts/#lato-heavy-italic"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Monotype Corsiva"
-                                       Margin="4 0"
-                                       Padding="4 0"
-                                       FontSize="18"
-                                       FontFamily="pack://application:,,,/Resources/Fonts/#monotype corsiva"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Tahoma"
-                                       Margin="4 0"
-                                       Padding="4 0"
-                                       FontSize="18"
-                                       FontFamily="pack://application:,,,/Resources/Fonts/#Tahoma"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Windsor"
-                                       Margin="4 0"
-                                       Padding="4 0"
-                                       FontSize="18"
-                                       FontFamily="pack://application:,,,/Resources/Fonts/#windsor"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                </ComboBox>
             </StackPanel>
         </Border>
     </Grid>

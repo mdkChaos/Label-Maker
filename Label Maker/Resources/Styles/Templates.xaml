@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Label_Maker.Resources.Styles">
+    <DataTemplate x:Key="SelectColorComboBox">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Background="{Binding Path=ColorHEX}" Width="24" Height="24" ToolTip="#0e0e10"/>
+            <TextBlock Text="{Binding Path=Name}" Margin="4 0" FontSize="18" FontWeight="DemiBold" Padding="4 0"/>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="SelectFontComboBox">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Path=Name}"
+                       Margin="4 0"
+                       Padding="4 0"
+                       FontSize="18"
+                       FontFamily="{Binding Path=Path}"/>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>
