@@ -23,12 +23,12 @@ namespace LabelMaker.Model
         {
             ObservableCollection<Font> fonts = new ObservableCollection<Font>
             {
-                new Font("Angry Birds", "pack://application:,,,/Resources/Fonts/#AngryBirds"),
-                new Font("Arial", "pack://application:,,,/Resources/Fonts/#Arial"),
-                new Font("Lato Heavy Italic", "pack://application:,,,/Resources/Fonts/#lato-heavy-italic"),
-                new Font("Monotype Corsiva", "pack://application:,,,/Resources/Fonts/#monotype corsiva"),
-                new Font("Tahoma", "pack://application:,,,/Resources/Fonts/#Tahoma"),
-                new Font("Windsor", "pack://application:,,,/Resources/Fonts/#windsor")
+                new Font("Angry Birds", "#AngryBirds"),
+                new Font("Arial", "#Arial"),
+                new Font("Lato Heavy Italic", "#Lato Heavy"),
+                new Font("Monotype Corsiva", "#Monotype Corsiva"),
+                new Font("Tahoma", "#Tahoma"),
+                new Font("Windsor", "#windsor") //pack://application:,,,/Resources/Fonts/#windsor
             };
 
             return fonts;

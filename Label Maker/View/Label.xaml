@@ -7,7 +7,7 @@
              mc:Ignorable="d" d:DesignWidth="188.75"
              Margin="8 6 16 0">
 
-    <Border CornerRadius="6" Width="5 cm" Height="1.6 cm" Background="White" BorderThickness="1" BorderBrush="Red" Padding="2">
+    <Border Name="Border" CornerRadius="6" Width="5 cm" Height="1.6 cm" Background="White" BorderThickness="1" BorderBrush="Red" Padding="2">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
