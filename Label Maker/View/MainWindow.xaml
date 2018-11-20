@@ -56,21 +56,30 @@
                 <Label Content="Colors"
                        Style="{StaticResource Labels}"/>
 
-                <ComboBox Style="{StaticResource ComboBoxes}"
+                <ComboBox Name="Color"
+                          Style="{StaticResource ComboBoxes}"
                           ItemsSource="{Binding Colors}"
                           ItemTemplate="{StaticResource SelectColorComboBox}"/>
                 
                 <Label Content="Fonts"
                        Style="{StaticResource Labels}"/>
 
-                <ComboBox Style="{StaticResource ComboBoxes}"
+                <ComboBox Name="Font"
+                          Style="{StaticResource ComboBoxes}"
                           ItemsSource="{Binding Fonts}"
                           ItemTemplate="{StaticResource SelectFontComboBox}"/>
 
                 <Separator Background="Gray"/>
-                
-                
-                
+
+                <RadioButton Name="Simple"
+                             Style="{StaticResource SelectTypeLabelRadioButton}"
+                             Content="Simple label"
+                             IsChecked="True"/>
+
+                <RadioButton Name="Satin"
+                             Style="{StaticResource SelectTypeLabelRadioButton}"
+                             Content="Satin label"/>
+
                 <Button Style="{StaticResource ControlButton}"
                         Command="{Binding InsertLabelOnCanvasCommand}"
                 >

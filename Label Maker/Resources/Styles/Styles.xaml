@@ -27,4 +27,11 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
     </Style>
+    <Style x:Key="SelectTypeLabelRadioButton" TargetType="{x:Type RadioButton}">
+        <Setter Property="GroupName" Value="SelectTypeLabel"/>
+        <Setter Property="Margin" Value="8 4"/>
+        <Setter Property="Foreground" Value="LightGray"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+    </Style>
 </ResourceDictionary>
