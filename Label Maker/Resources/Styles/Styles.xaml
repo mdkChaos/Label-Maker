@@ -14,8 +14,17 @@
         <Setter Property="FontSize" Value="24"/>
     </Style>
     <Style x:Key="ComboBoxes" TargetType="{x:Type ComboBox}">
-        <Setter Property="Margin" Value="4"/>
+        <Setter Property="Margin" Value="8"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="SelectedIndex" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="Labels" TargetType="{x:Type Label}">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Foreground" Value="LightGray"/>
+        <Setter Property="Margin" Value="4 0"/>
+        <Setter Property="Padding" Value="4 0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
     </Style>
 </ResourceDictionary>

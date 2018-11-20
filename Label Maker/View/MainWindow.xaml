@@ -19,7 +19,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="185"/>
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0" BorderThickness="1" BorderBrush="Gray">
@@ -54,41 +54,34 @@
                 <Separator Background="Gray"/>
                 
                 <Label Content="Colors"
-                       HorizontalAlignment="Right"
-                       Foreground="LightGray"
-                       Margin="4 0"
-                       Padding="4 0"
-                       FontSize="14"
-                       FontWeight="DemiBold"/>
+                       Style="{StaticResource Labels}"/>
 
                 <ComboBox Style="{StaticResource ComboBoxes}"
                           ItemsSource="{Binding Colors}"
                           ItemTemplate="{StaticResource SelectColorComboBox}"/>
                 
                 <Label Content="Fonts"
-                       HorizontalAlignment="Right"
-                       Foreground="LightGray"
-                       Margin="4 0"
-                       Padding="4 0"
-                       FontSize="14"
-                       FontWeight="DemiBold"/>
+                       Style="{StaticResource Labels}"/>
 
                 <ComboBox Style="{StaticResource ComboBoxes}"
-                          VerticalContentAlignment="Center"
                           ItemsSource="{Binding Fonts}"
                           ItemTemplate="{StaticResource SelectFontComboBox}"/>
 
                 <Separator Background="Gray"/>
-
+                
+                
+                
                 <Button Style="{StaticResource ControlButton}"
                         Command="{Binding InsertLabelOnCanvasCommand}"
                 >
                     <WrapPanel>
                         <Image Source="/Label Maker;component/Resources/Images/LabelIcon.png" Width="24" Margin="4 0"/>
-                        <TextBlock Text="Plain Label" Margin="4 0"/>
+                        <TextBlock Text="Create Label" Margin="4 0"/>
                     </WrapPanel>
                 </Button>
 
+                <Separator Background="Gray"/>
+                
                 <Button Style="{StaticResource ControlButton}"
                         Command="{Binding PrintCommand}"
                 >
