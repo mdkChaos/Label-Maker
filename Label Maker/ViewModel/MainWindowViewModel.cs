@@ -22,7 +22,8 @@ namespace LabelMaker.ViewModel
         #region Fields
 
         private MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-        private string font;
+        private string fontURI;
+        private string fontPath;
         private string color;
         private bool isSimple;
 
@@ -73,7 +74,8 @@ namespace LabelMaker.ViewModel
 
             if (window.Font.SelectedItem is Font fonts)
             {
-                font = fonts.Path;
+                fontURI = fonts.BaseURI;
+                fontPath = fonts.Path;
             }
 
             isSimple = (bool)window.Simple.IsChecked;
@@ -123,10 +125,10 @@ namespace LabelMaker.ViewModel
                 label.Border.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
                 label.FirstName.Text = user.FirstName;
                 label.FirstName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.FirstName.FontFamily = new FontFamily(font);
+                label.FirstName.FontFamily = new FontFamily(new Uri(fontURI), "./" + fontPath);
                 label.LastName.Text = user.LastName;
                 label.LastName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.LastName.FontFamily = new FontFamily(font);
+                label.LastName.FontFamily = new FontFamily(new Uri(fontURI), "./" + fontPath);
                 label.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + user.ImagePath + ".png", UriKind.RelativeOrAbsolute));
 
                 wrapPanel.Children.Add(label);
@@ -148,10 +150,10 @@ namespace LabelMaker.ViewModel
                 label.Border.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
                 label.FirstName.Text = user.FirstName;
                 label.FirstName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.FirstName.FontFamily = new FontFamily(font);
+                label.FirstName.FontFamily = new FontFamily(new Uri(fontURI), "./" + fontPath);
                 label.LastName.Text = user.LastName;
                 label.LastName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.LastName.FontFamily = new FontFamily(font);
+                label.LastName.FontFamily = new FontFamily(new Uri(fontURI), "./" + fontPath);
                 label.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + user.ImagePath + ".png", UriKind.RelativeOrAbsolute));
 
                 wrapPanel.Children.Add(label);
