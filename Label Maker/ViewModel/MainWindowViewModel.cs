@@ -145,8 +145,13 @@ namespace LabelMaker.ViewModel
             for (int i = 0; i < 55; i++)
             {
                 View.Label label = new View.Label();
+                label.Border.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
                 label.FirstName.Text = user.FirstName;
+                label.FirstName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
+                label.FirstName.FontFamily = new FontFamily(font);
                 label.LastName.Text = user.LastName;
+                label.LastName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
+                label.LastName.FontFamily = new FontFamily(font);
                 label.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + user.ImagePath + ".png", UriKind.RelativeOrAbsolute));
 
                 wrapPanel.Children.Add(label);

@@ -7,7 +7,7 @@
              mc:Ignorable="d" d:DesignWidth="188.75"
              Margin="8 6 16 0">
 
-    <Border Name="Border" CornerRadius="6" Width="5 cm" Height="1.6 cm" Background="White" BorderThickness="1" BorderBrush="Red" Padding="2">
+    <Border Name="Border" CornerRadius="6" Width="5 cm" Height="1.6 cm" Background="White" BorderThickness="1" Padding="2">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -20,15 +20,11 @@
             <TextBlock Name="FirstName"
                        Grid.Row="0"
                        Grid.Column="0"
-                       Style="{StaticResource LabelTextBlock}"
-                       Text="Александрова"
-                       Foreground="Red"/>
+                       Style="{StaticResource LabelTextBlock}"/>
             <TextBlock Name="LastName"
                        Grid.Row="1"
                        Grid.Column="0"
-                       Style="{StaticResource LabelTextBlock}"
-                       Text="Александра"
-                       Foreground="Red"/>
+                       Style="{StaticResource LabelTextBlock}"/>
             <Image Name="Image"
                    Grid.Column="1"
                    Grid.RowSpan="2"
