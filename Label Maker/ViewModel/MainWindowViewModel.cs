@@ -14,6 +14,7 @@ using System.Windows.Threading;
 using Data;
 using System.Windows.Media;
 using Color = Data.Color;
+using System.Collections.Generic;
 
 namespace LabelMaker.ViewModel
 {
@@ -22,17 +23,13 @@ namespace LabelMaker.ViewModel
         #region Fields
 
         private MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-        private string fontURI;
-        private string fontPath;
-        private string color;
         private bool isSimple;
 
         #endregion
 
         #region Properties
 
-        public ObservableCollection<Color> Colors { get; }
-        public ObservableCollection<Font> Fonts { get; }
+
 
         #endregion
 
@@ -43,8 +40,6 @@ namespace LabelMaker.ViewModel
             GetLabelsCommand = new DelegateCommand(async o => await GetLabelsAsync());
             InsertLabelOnCanvasCommand = new DelegateCommand(o => InsertLabelOnCanvas());
             PrintCommand = new DelegateCommand(o => Print());
-            Colors = ColorRepository.Colors;
-            Fonts = FontRepository.Fonts;
         }
 
         #endregion
@@ -67,24 +62,14 @@ namespace LabelMaker.ViewModel
         private void InsertLabelOnCanvas()
         {
             window.A4.Blocks.Clear();
-            if (window.Color.SelectedItem is Color colors)
-            {
-                color = colors.ColorHEX;
-            }
-
-            if (window.Font.SelectedItem is Font fonts)
-            {
-                fontURI = fonts.BaseURI;
-                fontPath = fonts.Path;
-            }
 
             isSimple = (bool)window.Simple.IsChecked;
 
-            ObservableCollection<Label> listOfUsers = LabelRepository.AllLabels;
+            List<Label> labels = LabelRepository.AllLabels;
 
-            foreach (Label user in listOfUsers)
+            foreach (Label label in labels)
             {
-                window.A4.Blocks.Add(AddLabel(user));
+                window.A4.Blocks.Add(AddLabel(label));
             }
         }
 
@@ -101,19 +86,23 @@ namespace LabelMaker.ViewModel
 
         #region Methods
 
-        private BlockUIContainer AddLabel(Label user)
+        private BlockUIContainer AddLabel(Label label)
         {
             BlockUIContainer container = null;
 
             if (isSimple)
             {
-                container = GetSimpleLabel(user);
+                container = GetSimpleLabel(label);
+            }
+            else
+            {
+                container = GetSatinLabel(label);
             }
 
             return container;
         }
 
-        private BlockUIContainer GetSimpleLabel(Label user)
+        private BlockUIContainer GetSimpleLabel(Label label)
         {
             WrapPanel wrapPanel = new WrapPanel
             {
@@ -121,24 +110,33 @@ namespace LabelMaker.ViewModel
             };
             for (int i = 0; i < 55; i++)
             {
-                View.Label label = new View.Label();
-                label.Border.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.FirstName.Text = user.FirstName;
-                label.FirstName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.FirstName.FontFamily = new FontFamily(new Uri(fontURI), "./" + fontPath);
-                label.LastName.Text = user.LastName;
-                label.LastName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.LastName.FontFamily = new FontFamily(new Uri(fontURI), "./" + fontPath);
-                label.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + user.ImagePath + ".png", UriKind.RelativeOrAbsolute));
+                View.Label viewLabel = new View.Label();
 
-                wrapPanel.Children.Add(label);
+                viewLabel.Border.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+
+                viewLabel.FirstName.Text = label.FirstName;
+                viewLabel.FirstName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+                viewLabel.FirstName.FontFamily = new FontFamily(new Uri(label.Font.BaseURI), "./" + label.Font.Path);
+                viewLabel.FirstName.FontSize = label.Font.FontSize;
+
+                viewLabel.LastName.Text = label.LastName;
+                viewLabel.LastName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+                viewLabel.LastName.FontFamily = new FontFamily(new Uri(label.Font.BaseURI), "./" + label.Font.Path);
+                viewLabel.LastName.FontSize = label.Font.FontSize;
+
+                if (label.ImagePath != "0")
+                {
+                    viewLabel.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + label.ImagePath + ".png", UriKind.RelativeOrAbsolute));
+                }
+
+                wrapPanel.Children.Add(viewLabel);
             }
             BlockUIContainer container = new BlockUIContainer(wrapPanel);
 
             return container;
         }
 
-        private BlockUIContainer GetSatinLabel(Label user)
+        private BlockUIContainer GetSatinLabel(Label label)
         {
             WrapPanel wrapPanel = new WrapPanel
             {
@@ -146,17 +144,20 @@ namespace LabelMaker.ViewModel
             };
             for (int i = 0; i < 55; i++)
             {
-                View.Label label = new View.Label();
-                label.Border.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.FirstName.Text = user.FirstName;
-                label.FirstName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.FirstName.FontFamily = new FontFamily(new Uri(fontURI), "./" + fontPath);
-                label.LastName.Text = user.LastName;
-                label.LastName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(color));
-                label.LastName.FontFamily = new FontFamily(new Uri(fontURI), "./" + fontPath);
-                label.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + user.ImagePath + ".png", UriKind.RelativeOrAbsolute));
+                View.Label viewLabel = new View.Label();
+                viewLabel.Border.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+                viewLabel.FirstName.Text = label.FirstName;
+                viewLabel.FirstName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+                viewLabel.FirstName.FontFamily = new FontFamily(new Uri(label.Font.BaseURI), "./" + label.Font.Path);
+                viewLabel.LastName.Text = label.LastName;
+                viewLabel.LastName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+                viewLabel.LastName.FontFamily = new FontFamily(new Uri(label.Font.BaseURI), "./" + label.Font.Path);
+                if (label.ImagePath != "0")
+                {
+                    viewLabel.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + label.ImagePath + ".png", UriKind.RelativeOrAbsolute));
+                }
 
-                wrapPanel.Children.Add(label);
+                wrapPanel.Children.Add(viewLabel);
             }
             BlockUIContainer container = new BlockUIContainer(wrapPanel);
 

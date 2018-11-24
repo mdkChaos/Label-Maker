@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Data;
 using DataProvider;
@@ -7,9 +7,9 @@ namespace LabelMaker.Model
 {
     public static class LabelRepository
     {
-        private static ObservableCollection<Label> labels;
+        private static List<Label> labels;
 
-        public static ObservableCollection<Label> AllLabels
+        public static List<Label> AllLabels
         {
             get
             {

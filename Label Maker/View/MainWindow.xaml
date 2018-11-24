@@ -51,7 +51,7 @@
                     </WrapPanel>
                 </Button>
 
-                <Separator Background="Gray"/>
+                <!--<Separator Background="Gray"/>
                 
                 <Label Content="Colors"
                        Style="{StaticResource Labels}"/>
@@ -67,7 +67,7 @@
                 <ComboBox Name="Font"
                           Style="{StaticResource ComboBoxes}"
                           ItemsSource="{Binding Fonts}"
-                          ItemTemplate="{StaticResource SelectFontComboBox}"/>
+                          ItemTemplate="{StaticResource SelectFontComboBox}"/>-->
 
                 <Separator Background="Gray"/>
 

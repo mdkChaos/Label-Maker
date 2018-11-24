@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -15,7 +15,7 @@ namespace DataProvider
     public static class ExcelProvider
     {
         private static string FileName { get; set; }
-        public static ObservableCollection<Label> Labels { get; } = new ObservableCollection<Label>();
+        public static List<Label> Labels { get; } = new List<Label>();
 
         public static async Task GetLabelsAsync()
         {
@@ -91,6 +91,7 @@ namespace DataProvider
             int row = 2;
             dynamic range;
             string text;
+            Labels.Clear();
             Label label;
             CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
@@ -100,10 +101,11 @@ namespace DataProvider
             while (!string.IsNullOrWhiteSpace(text.Trim()))
             {
                 label = new Label();
-                label.FirstName = text.Trim();
+                label.LastName = text.Trim();
+
                 range = workSheet.Cells[row, 2];
                 text = range.Text;
-                label.LastName = text.Trim();
+                label.FirstName = text.Trim();
 
                 range = workSheet.Cells[row, 3];
                 text = range.Text;
@@ -115,7 +117,36 @@ namespace DataProvider
                 {
                     label.ImagePath = "0";
                 }
+
+                range = workSheet.Cells[row, 4];
+                text = range.Text;
+                if (!string.IsNullOrWhiteSpace(text.Trim()))
+                {
+                    Font font = new Font();
+                    font = FontRepository.Fonts[text.Trim()];
+                    label.Font = new Font(font.Name, font.Path);
+                }
+
+                range = workSheet.Cells[row, 5];
+                text = range.Text;
+                if (!string.IsNullOrWhiteSpace(text.Trim()))
+                {
+                    label.Color = ColorRepository.Colors[text.Trim()];
+                }
+                else
+                {
+                    label.Color = ColorRepository.Colors["Black"];
+                }
+
+                range = workSheet.Cells[row, 6];
+                text = range.Text;
+                if (double.TryParse(text.Trim(), out double doubleResult))
+                {
+                    label.Font.FontSize = doubleResult * 4 / 3;
+                }
+
                 Labels.Add(label);
+
                 row++;
                 range = workSheet.Cells[row, 1];
                 text = range.Text;

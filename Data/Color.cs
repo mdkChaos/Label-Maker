@@ -2,18 +2,18 @@
 {
     public class Color
     {
-        public string ColorHEX { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = "Black";
+        public string ColorHEX { get; set; } = "#0e0e10";
 
         public Color()
         {
 
         }
 
-        public Color(string colorHEX, string name)
+        public Color(string name, string colorHEX)
         {
-            ColorHEX = colorHEX;
             Name = name;
+            ColorHEX = colorHEX;
         }
     }
 }

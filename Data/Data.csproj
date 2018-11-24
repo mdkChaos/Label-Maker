@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Color.cs" />
+    <Compile Include="ColorRepository.cs" />
     <Compile Include="Font.cs" />
+    <Compile Include="FontRepository.cs" />
     <Compile Include="Label.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
