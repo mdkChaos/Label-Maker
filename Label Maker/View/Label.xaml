@@ -17,11 +17,11 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBlock Name="FirstName"
+            <TextBlock Name="LastName"
                        Grid.Row="0"
                        Grid.Column="0"
                        Style="{StaticResource LabelTextBlock}"/>
-            <TextBlock Name="LastName"
+            <TextBlock Name="FirstName"
                        Grid.Row="1"
                        Grid.Column="0"
                        Style="{StaticResource LabelTextBlock}"/>

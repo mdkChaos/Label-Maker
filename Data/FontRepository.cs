@@ -23,10 +23,12 @@ namespace Data
             Dictionary<string, Font> fonts = new Dictionary<string, Font>
             {
                 { "Angry Birds", new Font("Angry Birds", "Resources/Fonts/#AngryBirds") },
-                { "Arial", new Font("Arial", "Resources/Fonts/#Arial") },
+                { "Calligraph", new Font("Calligraph", "Resources/Fonts/#Calligraph") },
                 { "Lato Heavy Italic", new Font("Lato Heavy Italic", "Resources/Fonts/#Lato Heavy") },
+                { "Lobster", new Font("Lobster", "Resources/Fonts/#Lobster") },
                 { "Monotype Corsiva", new Font("Monotype Corsiva", "Resources/Fonts/#Monotype Corsiva") },
-                { "Tahoma", new Font("Tahoma", "Resources/Fonts/#Tahoma") }
+                { "Tahoma", new Font("Tahoma", "Resources/Fonts/#Tahoma") },
+                { "Yikes!", new Font("Yikes!", "Resources/Fonts/#Yikes!") }
             };
 
             return fonts;

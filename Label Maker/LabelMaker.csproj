@@ -116,10 +116,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\Calligraph.ttf" />
+    <Resource Include="Resources\Fonts\Yikes!.ttf" />
     <Resource Include="Resources\Fonts\AngryBirds.ttf" />
-    <Resource Include="Resources\Fonts\arial.ttf" />
     <Resource Include="Resources\Fonts\lato-heavy-italic.ttf" />
-    <Resource Include="Resources\Fonts\windsor.ttf" />
     <Resource Include="Resources\Fonts\monotype corsiva.ttf" />
     <Resource Include="Resources\Fonts\Tahoma.ttf" />
     <Resource Include="Resources\Fonts\Lobster-Regular.ttf" />

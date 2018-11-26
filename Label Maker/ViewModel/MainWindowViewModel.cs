@@ -6,14 +6,10 @@ using LabelMaker.View;
 using System.Windows.Documents;
 using System.Windows.Controls;
 using System.Threading.Tasks;
-using System.Collections.ObjectModel;
 using Label = Data.Label;
 using System.Windows.Media.Imaging;
 using System;
-using System.Windows.Threading;
-using Data;
 using System.Windows.Media;
-using Color = Data.Color;
 using System.Collections.Generic;
 
 namespace LabelMaker.ViewModel
@@ -145,13 +141,16 @@ namespace LabelMaker.ViewModel
             for (int i = 0; i < 55; i++)
             {
                 View.Label viewLabel = new View.Label();
-                viewLabel.Border.BorderBrush = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+                viewLabel.Border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+
                 viewLabel.FirstName.Text = label.FirstName;
-                viewLabel.FirstName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+                viewLabel.FirstName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
                 viewLabel.FirstName.FontFamily = new FontFamily(new Uri(label.Font.BaseURI), "./" + label.Font.Path);
+
                 viewLabel.LastName.Text = label.LastName;
-                viewLabel.LastName.Foreground = new SolidColorBrush((System.Windows.Media.Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
+                viewLabel.LastName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
                 viewLabel.LastName.FontFamily = new FontFamily(new Uri(label.Font.BaseURI), "./" + label.Font.Path);
+
                 if (label.ImagePath != "0")
                 {
                     viewLabel.Image.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\img\\" + label.ImagePath + ".png", UriKind.RelativeOrAbsolute));
