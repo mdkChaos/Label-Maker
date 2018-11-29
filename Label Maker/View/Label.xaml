@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LabelMaker.View"
-             mc:Ignorable="d" d:DesignWidth="188.75"
-             Margin="8 6 16 0">
+             mc:Ignorable="d" d:DesignWidth="188.75">
 
     <Border Name="Border" CornerRadius="6" Width="5 cm" Height="1.6 cm" Background="White" BorderThickness="1" Padding="2">
         <Grid>

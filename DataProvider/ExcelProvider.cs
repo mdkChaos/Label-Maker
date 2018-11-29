@@ -115,7 +115,7 @@ namespace DataProvider
                 }
                 else
                 {
-                    label.ImagePath = "0";
+                    label.ImagePath = string.Empty;
                 }
 
                 range = workSheet.Cells[row, 4];

@@ -31,12 +31,14 @@
                                 Background="Gray"
                                 IsFindEnabled="False"
                                 IsPrintEnabled="True"
-                                Margin="4">
+                                Margin="4"
+                                IsTwoPageViewEnabled="False">
                 <FlowDocument Name="A4"
                               Background="White"
                               PageWidth="29.7 cm"
                               PageHeight="21 cm"
-                              ColumnWidth="29.7 cm"/>
+                              ColumnWidth="29.7 cm"
+                              PagePadding="0"/>
             </FlowDocumentReader>
         </Border>
 
