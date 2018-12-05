@@ -161,6 +161,8 @@ namespace LabelMaker.ViewModel
         {
             return new Border
             {
+                BorderBrush = new SolidColorBrush(Colors.DarkGray),
+                BorderThickness = new Thickness(1),
                 Background = new SolidColorBrush(Colors.LightGray),
                 Height = ConvertMmToPixel(height),
                 Width = ConvertMmToPixel(width)
@@ -171,6 +173,8 @@ namespace LabelMaker.ViewModel
         {
             return new Border
             {
+                BorderBrush = new SolidColorBrush(Colors.DarkGray),
+                BorderThickness = new Thickness(1),
                 Background = new SolidColorBrush(Colors.LightGray),
                 Height = ConvertMmToPixel(height),
                 Width = ConvertMmToPixel(width),
