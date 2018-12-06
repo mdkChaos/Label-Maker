@@ -21,13 +21,13 @@ namespace Data
         {
             Dictionary<string, Color> colors = new Dictionary<string, Color>
             {
-                { "Black", new Color("Black", "#0e0e10") },
-                { "Red", new Color("Red", "#cc2c24") },
-                { "Blue", new Color("Blue", "#005b8c") },
-                { "Pink", new Color("Pink", "#bc4077") },
-                { "Green", new Color("Green", "#61993b") },
-                { "Ginger", new Color("Ginger", "#e25303") },
-                { "Purple", new Color("Purple", "#76689a") }
+                { "1", new Color("Black", "#0e0e10") },
+                { "2", new Color("Red", "#cc2c24") },
+                { "3", new Color("Blue", "#005b8c") },
+                { "4", new Color("Pink", "#bc4077") },
+                { "5", new Color("Green", "#61993b") },
+                { "6", new Color("Ginger", "#e25303") },
+                { "7", new Color("Purple", "#76689a") }
             };
 
             return colors;

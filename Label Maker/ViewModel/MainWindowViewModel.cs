@@ -76,9 +76,15 @@ namespace LabelMaker.ViewModel
                 SelectedPagesEnabled = true,
                 UserPageRangeEnabled = true
             };
+
+            FlowDocument document = window.A4;
+
+            //document.PageHeight = printDialog.PrintableAreaHeight;
+            //document.PageWidth = printDialog.PrintableAreaWidth;
+
             if (printDialog.ShowDialog() == true)
             {
-                printDialog.PrintDocument(((IDocumentPaginatorSource)window.DocumentReader.Document).DocumentPaginator, "A Label Document");
+                printDialog.PrintDocument(((IDocumentPaginatorSource)document).DocumentPaginator, "A Label Document");
             }
         }
 
@@ -200,10 +206,12 @@ namespace LabelMaker.ViewModel
             viewLabel.FirstName.Text = label.FirstName;
             viewLabel.FirstName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
             viewLabel.FirstName.FontFamily = new FontFamily(new Uri(label.Font.BaseURI), "./" + label.Font.Path);
+            viewLabel.FirstName.FontSize = label.Font.FontSize;
 
             viewLabel.LastName.Text = label.LastName;
             viewLabel.LastName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(label.Color.ColorHEX));
             viewLabel.LastName.FontFamily = new FontFamily(new Uri(label.Font.BaseURI), "./" + label.Font.Path);
+            viewLabel.LastName.FontSize = label.Font.FontSize;
 
             if (!string.IsNullOrEmpty(label.ImagePath))
             {

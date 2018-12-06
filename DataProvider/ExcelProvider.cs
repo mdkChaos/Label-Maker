@@ -135,14 +135,14 @@ namespace DataProvider
                 }
                 else
                 {
-                    label.Color = ColorRepository.Colors["Black"];
+                    label.Color = ColorRepository.Colors["1"];
                 }
 
                 range = workSheet.Cells[row, 6];
                 text = range.Text;
                 if (double.TryParse(text.Trim(), out double doubleResult))
                 {
-                    label.Font.FontSize = doubleResult * 4 / 3;
+                    label.Font.FontSize = doubleResult;
                 }
 
                 Labels.Add(label);
