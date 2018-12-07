@@ -124,7 +124,7 @@ namespace DataProvider
                 {
                     Font font = new Font();
                     font = FontRepository.Fonts[text.Trim()];
-                    label.Font = new Font(font.Name, font.Path);
+                    label.Font = new Font() { Name = font.Name, Path = font.Path };
                 }
 
                 range = workSheet.Cells[row, 5];

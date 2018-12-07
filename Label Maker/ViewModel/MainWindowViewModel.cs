@@ -18,7 +18,7 @@ namespace LabelMaker.ViewModel
     {
         #region Fields
 
-        private MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+        private readonly MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
         private bool isSimple;
 
         #endregion
