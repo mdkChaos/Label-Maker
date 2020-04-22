@@ -7,13 +7,11 @@ namespace LabelMaker.Model
 {
     public static class LabelRepository
     {
-        private static List<Label> labels;
-
         public static List<Label> AllLabels
         {
             get
             {
-                return labels = ExcelProvider.Labels;
+                return ExcelProvider.Labels;
             }
         }
 

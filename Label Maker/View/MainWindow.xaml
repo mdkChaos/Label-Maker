@@ -53,24 +53,6 @@
                     </WrapPanel>
                 </Button>
 
-                <!--<Separator Background="Gray"/>
-                
-                <Label Content="Colors"
-                       Style="{StaticResource Labels}"/>
-
-                <ComboBox Name="Color"
-                          Style="{StaticResource ComboBoxes}"
-                          ItemsSource="{Binding Colors}"
-                          ItemTemplate="{StaticResource SelectColorComboBox}"/>
-                
-                <Label Content="Fonts"
-                       Style="{StaticResource Labels}"/>
-
-                <ComboBox Name="Font"
-                          Style="{StaticResource ComboBoxes}"
-                          ItemsSource="{Binding Fonts}"
-                          ItemTemplate="{StaticResource SelectFontComboBox}"/>-->
-
                 <Separator Background="Gray"/>
 
                 <RadioButton Name="Simple"

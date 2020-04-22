@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -6,8 +8,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using Data;
-using Microsoft.Win32;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace DataProvider
@@ -100,8 +100,10 @@ namespace DataProvider
 
             while (!string.IsNullOrWhiteSpace(text.Trim()))
             {
-                label = new Label();
-                label.LastName = text.Trim();
+                label = new Label
+                {
+                    LastName = text.Trim()
+                };
 
                 range = workSheet.Cells[row, 2];
                 text = range.Text;
@@ -122,8 +124,8 @@ namespace DataProvider
                 text = range.Text;
                 if (!string.IsNullOrWhiteSpace(text.Trim()))
                 {
-                    Font font = new Font();
-                    font = FontRepository.Fonts[text.Trim()];
+                    //_ = new Font();
+                    Font font = FontRepository.Fonts[text.Trim()];
                     label.Font = new Font() { Name = font.Name, Path = font.Path };
                 }
 
@@ -155,8 +157,6 @@ namespace DataProvider
             Thread.CurrentThread.CurrentCulture = temp_culture;
             Marshal.ReleaseComObject(workSheet);
             Marshal.ReleaseComObject(range);
-            range = null;
-            workSheet = null;
         }
     }
 }
